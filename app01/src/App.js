@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -6,12 +6,16 @@ const [count, setCount] = useState(0);
 
 const increment = ()=>{
   setCount(count + 1);
-  console.log(count);
 };
 
 const decrement = ()=>{
   setCount(count - 1);
 };
+
+useEffect(()=>{
+  console.log(`New count is: ${count}`); // Correct
+},[]
+);
 
   return (
     <div>
