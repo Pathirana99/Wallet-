@@ -10,8 +10,8 @@ export default function Login() {
             </div>
             <div className="loginForm">
               <div className="formSection">
-                <label>Username</label>
-                <input type="text" placeholder="Enter your username" />
+                <label>Email</label>
+                <input type="text" placeholder="Enter your email" />
               </div>
               <div className="formSection">
                 <label>Password</label>

@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import Home from './Home/Home';
 import Login from './Pages/Login';
+import SignIn from './Pages/SignIn';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavigationBar from './NavBar/NavigationBar';
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/Login' element={<Login/>} />
+          <Route path='/SignIn' element={<SignIn/>} />
         </Routes>
       </div>
     </Router>
