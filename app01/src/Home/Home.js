@@ -12,7 +12,23 @@ export default function Home() {
           <button className="logOut">Log Out</button>
         </div>
         <div className="mainContent">
-          
+        <div className="header">
+          <h2>Sunith P Pathirana</h2>
+        </div>
+        <div className="form">
+          <div className="section">
+            <label>INCOME</label>
+            <input type="text" placeholder="Enter amount" />
+          </div>
+          <div className="section">
+            <label>OUTCOME</label>
+            <input type="text" placeholder="Enter amount" />
+          </div>
+          <div className="balance">
+          <div className="balance">balance</div>
+          </div>
+          <button className="add">ADD</button>
+        </div>
         </div>
     </div>
   )

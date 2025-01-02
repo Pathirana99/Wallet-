@@ -1,4 +1,17 @@
-.bg-body-tertiary {
-    background-color: #030c69 !important;
+.custom-navbar {
+    background-color: #030c69;
     height: 60px;
-}
+  }
+  
+  .wallet {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .custom-navbar .container {
+    display: flex;
+    justify-content: center; /* Center the content in the navbar */
+  }

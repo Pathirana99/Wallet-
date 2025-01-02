@@ -1,5 +1,5 @@
 body{
-    background-color: #f9f9f9;
+    background-color: #fafafa;
 
 }
 .home{
@@ -7,7 +7,7 @@ body{
     height: 100vh;
 }
 .sidebar{
-    background-color: rgb(181, 184, 186);
+    background-color: #8186b4;
     width: 20%;
     display: flex;
     flex-direction: column;
@@ -44,3 +44,63 @@ body{
     font-size: 14px;
     cursor: pointer;
 }
+.logOut:hover{
+    background-color: #cececf;
+}
+.mainContent{
+    flex: 1;
+    background-color: #cdcee1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.header{
+    background-color: #b3e5fc;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.form{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.section{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+label {
+    flex: 1;
+    font-size: 16px;
+    text-align: left;
+}
+input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.balance{
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    border: none;
+}
+.add{
+    background-color: #ff1744;
+    padding: 10px 40px;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.add:hover {
+    background-color: #d50000;
+  }
