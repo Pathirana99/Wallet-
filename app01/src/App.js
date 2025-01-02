@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import Home from './Home/Home';
+import LoadingPage from './Pages/LoadingPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<LoadingPage/>} />
         </Routes>
       </div>
     </Router>
