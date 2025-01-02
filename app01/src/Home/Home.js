@@ -4,11 +4,15 @@ import './home.css'
 export default function Home() {
   return (
     <div className="home">
-        <div className="leftclm">
-          
+        <div className="sidebar">
+          <div className="profilePic">
+            S
+          </div>
+          <div className="userName">Sunith P Pathirana</div>
+          <button className="logOut">Log Out</button>
         </div>
-        <div className="midclm">
-          <h1>ssss</h1>
+        <div className="mainContent">
+          
         </div>
     </div>
   )
