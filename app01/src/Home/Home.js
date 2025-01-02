@@ -6,7 +6,7 @@ export default function Home() {
     <div className="home">
         <div className="sidebar">
           <div className="profilePic">
-            S
+            <div className="profileLetter">S</div>
           </div>
           <div className="userName">Sunith P Pathirana</div>
           <button className="logOut">Log Out</button>

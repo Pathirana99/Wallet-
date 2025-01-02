@@ -24,3 +24,23 @@ body{
     justify-content: center;
     margin-bottom: 20px;
 }
+.profileLetter{
+    font-size: 50px;
+    color: #000000;
+    font-weight: bold;
+}
+.userName{
+    background-color: #b3e5fc;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.logOut{
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
