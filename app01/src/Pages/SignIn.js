@@ -1,7 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './signIn.css'
+import axios from "axios"
 
 export default function SignIn() {
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function save(event) {
+    event.preventDefault();
+    try{
+      await axios.post("http://localhost:8080/user/save",{
+        name:name,
+        email:email,
+        password:password,
+      });
+      alert("Registration Successfully...");
+    }catch(err){
+      alert(err);
+    }
+  }
+
     return (
         <div className="login">
           <div className="loginContent">
@@ -9,19 +29,34 @@ export default function SignIn() {
               <h2>SignUp</h2>
             </div>
             <div className="loginForm">
-            <div className="formSection">
+              <div className="formSection">
                 <label>Name</label>
-                <input type="text" placeholder="Enter your name" />
+                <input type="text" placeholder="Enter your name"
+                  value={name}
+                  onChange={(Event) => {
+                    setName(Event.target.value);
+                  }}
+                />
               </div>
               <div className="formSection">
                 <label>Email</label>
-                <input type="text" placeholder="Enter your email" />
+                <input type="text" placeholder="Enter your email"
+                  value={email}
+                  onChange={(Event) => {
+                    setEmail(Event.target.value);
+                  }}
+                />
               </div>
               <div className="formSection">
                 <label>Password</label>
-                <input type="password" placeholder="Enter your password" />
+                <input type="password" placeholder="Enter your password"
+                  value={password}
+                  onChange={(Event) => {
+                    setPassword(Event.target.value);
+                  }}
+                />
               </div>
-              <button className="loginButton">SignUp</button>
+              <button type="submit" className="loginButton" onClick={save}>SignUp</button>
             </div>
           </div>
         </div>
