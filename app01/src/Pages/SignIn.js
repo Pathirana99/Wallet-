@@ -4,7 +4,7 @@ import axios from "axios"
 
 export default function SignIn() {
 
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,11 +12,11 @@ export default function SignIn() {
     event.preventDefault();
     try{
       await axios.post("http://localhost:8080/user/save",{
-        name:name,
+        username:username,
         email:email,
         password:password,
       });
-      alert("Registration Successfully...");
+      alert("Registration Successfully");
     }catch(err){
       alert(err);
     }
@@ -32,9 +32,9 @@ export default function SignIn() {
               <div className="formSection">
                 <label>Name</label>
                 <input type="text" placeholder="Enter your name"
-                  value={name}
+                  value={username}
                   onChange={(Event) => {
-                    setName(Event.target.value);
+                    setUsername(Event.target.value);
                   }}
                 />
               </div>
