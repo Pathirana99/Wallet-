@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./admin.css";
+import axios from "axios";
 
 export default function Admin() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    async function fetchUsers() {
+      const userDetails = await axios.get("http://localhost:8080/admin/all");
+      setUsers(userDetails.data);
+    }
+    fetchUsers();
+  }, []);
+
   return (
     <div className="admin">
       <div className="admheader">
@@ -19,18 +30,24 @@ export default function Admin() {
               <th>ID</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Password</th>
               <th>Balance</th>
+              <th>Password</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Id</td>
-              <td>name</td>
-              <td>email</td>
-              <td>password</td>
-              <td>Balance</td>
-            </tr>
+            {users.length > 0 ? (
+              users.map((user) => (
+                <tr key={user.id}>
+                  <td>{user.id}</td>
+                  <td>{user.username}</td>
+                  <td>{user.email}</td>
+                  <td>{user.balance}</td>
+                  <td>{user.password}</td>
+                </tr>
+              ))
+            ) : (
+              <tr></tr>
+            )}
           </tbody>
         </table>
       </div>
