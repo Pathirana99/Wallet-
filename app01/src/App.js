@@ -5,6 +5,8 @@ import SignIn from './Pages/SignIn';
 import Home from './Home/Home'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavigationBar from './NavBar/NavigationBar';
+import Admin from './Pages/Admin';
+import Sunith from './Pages/Sunith';
 
 function App() {
 
@@ -16,6 +18,8 @@ function App() {
           <Route path='/' element={<Login/>} />
           <Route path='/Home' element={<Home/>} />
           <Route path='/SignIn' element={<SignIn/>} />
+          <Route path='/Admin' element={<Admin/>}/>
+          <Route path='/Sunith' element={<Sunith/>}/>
         </Routes>
       </div>
     </Router>

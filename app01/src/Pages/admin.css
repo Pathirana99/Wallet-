@@ -1,0 +1,46 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.admin{
+    background-color: #cdcee1;
+    height: 100%;
+    padding: 20px;
+}
+.adminDetails{
+    background-color: #b3e5fc;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+.admheader{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.userTable{
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+thead{
+    background-color: #8589b3;
+    color: white;
+}
+th {
+    text-align: center;
+    border: 1px solid rgb(255, 255, 255);
+    padding: 10px;
+    font-weight: bold;
+}
+td{
+    text-align: left;
+    border: 1px solid rgb(255, 255, 255);
+    padding: 10px;
+}
+th {
+    
+  }
