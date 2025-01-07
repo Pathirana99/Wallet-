@@ -7,12 +7,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class UserDto {
+public class returnUserDto {
     private Integer id;
     private String username;
     private String email;
-    private String password;
-
-    public UserDto(Integer id, String username, String email) {
-    }
 }
