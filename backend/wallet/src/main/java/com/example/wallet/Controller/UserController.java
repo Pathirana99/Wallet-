@@ -22,9 +22,4 @@ public class UserController {
         returnUserDto savedUser = userService.saveUser(userDto);
         return new ResponseEntity<>(savedUser, HttpStatus.OK);
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> getUser(@PathVariable Long id) {
-        return new ResponseEntity<>("sucess", HttpStatus.OK);
-    }
 }
