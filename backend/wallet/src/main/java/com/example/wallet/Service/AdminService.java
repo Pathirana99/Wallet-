@@ -2,6 +2,7 @@ package com.example.wallet.Service;
 
 import com.example.wallet.Dto.AdminDto;
 import com.example.wallet.Dto.UserDto;
+import com.example.wallet.Dto.UserInAdminDto;
 import com.example.wallet.Entity.Admin;
 import com.example.wallet.Entity.User;
 import com.example.wallet.Repo.AdminRepo;
@@ -26,18 +27,20 @@ public class AdminService {
         return ResponseEntity.ok().build();
     }
 
-    public List<UserDto> getAllUsers() {
-        List<User> all = userRepo.findAll();
-        List<UserDto> userDtos = new ArrayList<>();
+    public List<UserInAdminDto> getAllUsers() {
+            List<User> all = userRepo.findAll();
+            List<UserInAdminDto> userInAdminDto = new ArrayList<>();
 
-        for (User user : all) {
-            userDtos.add(new UserDto(
-                    user.getId(),
-                    user.getUsername(),
-                    user.getEmail(),
-                    user.getPassword()
-            ));
+            for (User user : all) {
+                        userInAdminDto.add(new UserInAdminDto(
+                                user.getId(),
+                                user.getUsername(),
+                                user.getEmail(),
+                                user.getBalance(),
+                                user.getPassword()
+                        ));
+            }
+            return userInAdminDto;
         }
-        return userDtos;
+
     }
-}
