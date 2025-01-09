@@ -7,12 +7,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class returnUserDto {
+public class BalanceDto {
     private Integer id;
-    private String username;
-    private String balance;
-    private String email;
+    private Double balance;
 
-    public returnUserDto(Integer id, String username, String email) {
+    public BalanceDto(Double balance) {
+        this.balance = balance;
     }
 }

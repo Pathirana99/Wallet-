@@ -18,6 +18,7 @@ public class User {
     private Integer id;
     private String username;
     private String email;
+    private Double balance;
     private String password;
 
     public User(String username, String email, String password) {

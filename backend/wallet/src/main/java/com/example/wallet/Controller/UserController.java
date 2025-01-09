@@ -1,5 +1,6 @@
 package com.example.wallet.Controller;
 
+import com.example.wallet.Dto.BalanceDto;
 import com.example.wallet.Dto.UserDto;
 import com.example.wallet.Dto.returnUserDto;
 import com.example.wallet.Service.UserService;
@@ -21,5 +22,10 @@ public class UserController {
     public ResponseEntity<Object> saveUser(@RequestBody UserDto userDto) {
         returnUserDto savedUser = userService.saveUser(userDto);
         return new ResponseEntity<>(savedUser, HttpStatus.OK);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateBalance(@PathVariable int id, @RequestBody BalanceDto balanceDto) {
+        BalanceDto updatedBalance = userService.updateBalance(id, balanceDto);
+        return new ResponseEntity<>(updatedBalance, HttpStatus.OK);
     }
 }
