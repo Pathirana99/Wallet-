@@ -16,8 +16,8 @@ public class UserService {
     UserRepo userRepo;
 
     public returnUserDto saveUser(UserDto userDto) {
-        User user = userRepo.save(new User(userDto.getUsername(), userDto.getEmail(), userDto.getPassword()));
-        return new returnUserDto(user.getId(), user.getUsername(), user.getEmail());
+        User user = userRepo.save(new User(userDto.getUsername(), userDto.getEmail(), userDto.getPassword(), userDto.getRole()));
+        return new returnUserDto(user.getId(), user.getUsername(), user.getEmail(), user.getRole());
     }
 
     public BalanceDto updateBalance(int id, BalanceDto balanceDto) {
