@@ -27,7 +27,7 @@ export default function Home() {
     <div className="home">
       <div className="sidebar">
         <div className="profilePic">
-          <div className="profileLetter">S</div>
+          <div className="profileLetter">{username.charAt(0)}</div>
         </div>
         <div className="userName">{email}</div>
         <button className="logOut" onClick={handleLogout}>Log Out</button>
