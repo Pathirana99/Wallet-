@@ -31,7 +31,6 @@ export default function Admin() {
               <th>Name</th>
               <th>Email</th>
               <th>Balance</th>
-              <th>Password</th>
             </tr>
           </thead>
           <tbody>
@@ -42,7 +41,6 @@ export default function Admin() {
                   <td>{user.username}</td>
                   <td>{user.email}</td>
                   <td>{user.balance}</td>
-                  <td>{user.password}</td>
                 </tr>
               ))
             ) : (

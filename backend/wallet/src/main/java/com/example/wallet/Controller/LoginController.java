@@ -36,7 +36,7 @@ public class LoginController {
             final UserDetails userDetails = loginService.loadUserByUsername(request.getEmail());
             User user = loginService.findByEmail(request.getEmail()); // Use your custom User entity
 
-            final String jwt = jwtUtil.generateToken(userDetails, user.getEmail(), user.getRole(), user.getId());
+            final String jwt = jwtUtil.generateToken(userDetails, user.getEmail(), user.getRole(), user.getId(), user.getUsername());
 
             AuthenticationResponse authResponse = new AuthenticationResponse(jwt, user.getRole());
             return ResponseEntity.ok(authResponse);

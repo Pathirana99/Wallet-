@@ -62,11 +62,12 @@ public class JwtUtill {
         return extractExpiration(token).before(new Date());
     }
 
-    public String generateToken(UserDetails userDetails, String email, String role, Integer userId) {
+    public String generateToken(UserDetails userDetails, String email, String role, Integer userId, String username) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("email", email);
         claims.put("role", role);
         claims.put("userId", userId);
+        claims.put("username", username);
         return createToken(claims, userDetails.getUsername());
     }
 
