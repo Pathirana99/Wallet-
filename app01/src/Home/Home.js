@@ -78,9 +78,9 @@ export default function Home() {
               onChange={(e) => setOutcome(e.target.value)}
             />
           </div>
-          {/* <div className="balance">
+          <div className="balance">
             <div className="balanceValue">database value</div>
-          </div> */}
+          </div>
           <button className="addButton" onClick={add}>
             ADD
           </button>
