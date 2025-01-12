@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import './home.css';
-import { jwtDecode } from 'jwt-decode';
+import React, { useEffect, useState } from "react";
+import "./home.css";
+import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 
 export default function Home() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [income, setIncome] = useState("");
+  const [outcome, setOutcome] = useState("");
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
@@ -12,8 +16,25 @@ export default function Home() {
       const decodedJwt = jwtDecode(jwt);
       setUsername(decodedJwt.username);
       setEmail(decodedJwt.email);
+      setUserId(decodedJwt.userId);
     }
   }, []);
+
+  const add = async () => {
+    try {
+      const incomeValue = parseFloat(income) || 0;
+      const outcomeValue = parseFloat(outcome) || 0;
+      const calBal = incomeValue - outcomeValue;
+
+      const response = await axios.put(`http://localhost:8080/user/${userId}`, {
+        balance: calBal,
+      });
+
+      console.log("Backend response:", response.data);
+    } catch (error) {
+      console.error("Error updating balance:", error);
+    }
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("jwt");
@@ -30,26 +51,39 @@ export default function Home() {
           <div className="profileLetter">{username.charAt(0)}</div>
         </div>
         <div className="userName">{email}</div>
-        <button className="logOut" onClick={handleLogout}>Log Out</button>
+        <button className="logOut" onClick={handleLogout}>
+          Log Out
+        </button>
       </div>
       <div className="mainContent">
         <div className="header">
-        <div>{username}</div>
-          
+          <div>{username}</div>
         </div>
         <div className="form">
           <div className="section">
             <label>INCOME</label>
-            <input type="text" placeholder="Enter amount" />
+            <input
+              type="text"
+              placeholder="Enter amount"
+              value={income}
+              onChange={(e) => setIncome(e.target.value)}
+            />
           </div>
           <div className="section">
             <label>OUTCOME</label>
-            <input type="text" placeholder="Enter amount" />
+            <input
+              type="text"
+              placeholder="Enter amount"
+              value={outcome}
+              onChange={(e) => setOutcome(e.target.value)}
+            />
           </div>
-          <div className="balance">
-            <div className="balanceValue">Balance</div>
-          </div>
-          <button className="addButton">ADD</button>
+          {/* <div className="balance">
+            <div className="balanceValue">database value</div>
+          </div> */}
+          <button className="addButton" onClick={add}>
+            ADD
+          </button>
         </div>
       </div>
     </div>
