@@ -9,6 +9,7 @@ export default function Home() {
   const [income, setIncome] = useState("");
   const [outcome, setOutcome] = useState("");
   const [userId, setUserId] = useState("");
+  const [balance, setBalance] = useState("click add button");
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
@@ -30,7 +31,11 @@ export default function Home() {
         balance: calBal,
       });
 
-      console.log("Backend response:", response.data);
+      setBalance(response.data.balance);
+
+      setIncome("");
+      setOutcome("");
+
     } catch (error) {
       console.error("Error updating balance:", error);
     }
@@ -79,7 +84,7 @@ export default function Home() {
             />
           </div>
           <div className="balance">
-            <div className="balanceValue">database value</div>
+            <div className="balanceValue">{balance}</div>
           </div>
           <button className="addButton" onClick={add}>
             ADD

@@ -26,8 +26,13 @@ public class UserService {
 
     public BalanceDto updateBalance(int id, BalanceDto balanceDto) {
         User user = userRepo.findById(id).get();
-        user.setBalance(balanceDto.getBalance());
+        double availableBalance = user.getBalance();
+
+        double enteredBalance = balanceDto.getBalance();
+        double newBalance = availableBalance + enteredBalance;
+
+        user.setBalance(newBalance);
         userRepo.save(user);
-        return new BalanceDto(user.getBalance());
+        return new BalanceDto(newBalance);
     }
 }
