@@ -8,9 +8,12 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   const handleLogin = async (event) => {
+    
     event.preventDefault();
+    setError(""); 
 
     try {
       const response = await axios.post(
@@ -34,7 +37,7 @@ export default function Login() {
 
       navigate("/Home");
     } catch (error) {
-      console.error("Error logging in:", error);
+      setError("invalid password or email");
     }
   };
 
@@ -46,6 +49,7 @@ export default function Login() {
         </div>
         <div className="loginForm">
           <div className="formSection">
+          {error && <p className="errorMessage">{error}</p>}
             <label>Email</label>
             <input
               type="text"
