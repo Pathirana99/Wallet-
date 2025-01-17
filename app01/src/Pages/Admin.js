@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "./admin.css";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 export default function Admin() {
   const [users, setUsers] = useState([]);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  
+useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      const decodedJwt = jwtDecode(jwt);
+      setUsername(decodedJwt.username);
+      setEmail(decodedJwt.email);
+    }
+  }, []);
 
   useEffect(() => {
     async function fetchUsers() {
@@ -13,13 +25,23 @@ export default function Admin() {
     fetchUsers();
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("role");
+    localStorage.removeItem("username");
+    localStorage.removeItem("userEmail");
+
+    window.location.href = "/";
+  }
+
   return (
     <div className="admin">
       <div className="admheader">
         <h1>Admin Panel</h1>
         <div className="adminDetails">
-          <h2>Name</h2>
-          <h2>Email</h2>
+          <h2>{username}</h2>
+          <h2>{email}</h2>
+          <button className="logoutButton" onClick={handleLogout}>Logout</button>
         </div>
       </div>
       <div className="userTable">

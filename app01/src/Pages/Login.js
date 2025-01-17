@@ -11,7 +11,7 @@ export default function Login() {
   const [error, setError] = useState("");
 
   const handleLogin = async (event) => {
-    
+
     event.preventDefault();
     setError(""); 
 
@@ -35,7 +35,14 @@ export default function Login() {
       localStorage.setItem("username", username);
       localStorage.setItem("userEmail", userEmail);
 
-      navigate("/Home");
+      if(role === "USER"){
+        navigate("/Home");
+      }else if(role === "ADMIN"){
+        navigate("/Admin");
+      }else{
+        console.log("error")
+      }
+      
     } catch (error) {
       setError("invalid password or email");
     }
