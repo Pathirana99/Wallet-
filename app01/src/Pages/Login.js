@@ -48,6 +48,10 @@ export default function Login() {
     }
   };
 
+  const handleSignUp = () => {
+    navigate("/SignIn");
+  };
+
   return (
     <div className="login">
       <div className="loginContent">
@@ -78,7 +82,7 @@ export default function Login() {
             Login
           </button>
           <h9>If you haven't an account please signup</h9>
-          <button className="signUpButton">
+          <button className="signUpButton" onClick={handleSignUp}>
             SignUp
           </button>
         </div>
