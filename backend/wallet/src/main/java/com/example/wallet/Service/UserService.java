@@ -25,14 +25,24 @@ public class UserService {
     }
 
     public BalanceDto updateBalance(int id, BalanceDto balanceDto) {
-        User user = userRepo.findById(id).get();
-        double availableBalance = user.getBalance();
+        // Fetch the user by ID
+        User user = userRepo.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
 
+        // Get the available balance, initializing to 0.0 if it's null
+        double availableBalance = user.getBalance() != null ? user.getBalance() : 0.0;
+
+        // Get the entered balance to be added or subtracted
         double enteredBalance = balanceDto.getBalance();
+
+        // Calculate the new balance
         double newBalance = availableBalance + enteredBalance;
 
+        // Update the user's balance
         user.setBalance(newBalance);
         userRepo.save(user);
+
+        // Return the updated balance
         return new BalanceDto(newBalance);
     }
+
 }
