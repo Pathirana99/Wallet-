@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './signIn.css'
 import axios from "axios"
+import { Navigate } from 'react-router-dom';
 
 export default function SignIn() {
 
@@ -17,7 +18,8 @@ export default function SignIn() {
         password:password,
         role:"USER",
       });
-      alert("Registration Successfully");
+      // alert("Registration Successfully");
+      window.location.href = "/";
     }catch(err){
       alert(err);
     }
