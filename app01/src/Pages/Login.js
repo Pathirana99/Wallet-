@@ -42,7 +42,7 @@ export default function Login() {
       }else{
         console.log("error")
       }
-      
+
     } catch (error) {
       setError("invalid password or email");
     }
@@ -76,6 +76,10 @@ export default function Login() {
           </div>
           <button className="loginButton" onClick={handleLogin}>
             Login
+          </button>
+          <h9>If you haven't an account please signup</h9>
+          <button className="signUpButton">
+            SignUp
           </button>
         </div>
       </div>
