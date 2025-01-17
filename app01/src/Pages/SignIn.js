@@ -15,7 +15,7 @@ export default function SignIn() {
         username:username,
         email:email,
         password:password,
-        
+        role:"USER",
       });
       alert("Registration Successfully");
     }catch(err){
