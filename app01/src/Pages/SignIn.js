@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './signIn.css'
 import axios from "axios"
-import { Navigate } from 'react-router-dom';
 
 export default function SignIn() {
 

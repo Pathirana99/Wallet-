@@ -26,7 +26,11 @@ public class AdminController {
     }
     @GetMapping("/all")
         public ResponseEntity<List<UserInAdminDto>> getAllUsers() {
-            List<UserInAdminDto> allUsers = adminService.getAllUsers();
-            return new ResponseEntity<>(allUsers, HttpStatus.OK);
-        }
+        List<UserInAdminDto> users = adminService.getAllUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+    @GetMapping("/count")
+    public long countUser() {
+        return adminService.countUsers();
+    }
 }
