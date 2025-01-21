@@ -8,8 +8,8 @@ export default function Admin() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [countU, setCount] = useState("");
-  
-useEffect(() => {
+
+  useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       const decodedJwt = jwtDecode(jwt);
@@ -25,7 +25,7 @@ useEffect(() => {
     }
     async function countUsers() {
       const count = await axios.get("http://localhost:8080/admin/count");
-      setCount(count.data)
+      setCount(count.data);
     }
     fetchUsers();
     countUsers();
@@ -38,7 +38,7 @@ useEffect(() => {
     localStorage.removeItem("userEmail");
 
     window.location.href = "/";
-  }
+  };
 
   return (
     <div className="admin">
@@ -47,12 +47,17 @@ useEffect(() => {
         <div className="adminDetails">
           <h2>{username}</h2>
           <h2>{email}</h2>
-          <button className="logoutButton" onClick={handleLogout}>Logout</button>
+
+          <button className="logoutButton" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       </div>
       <div className="userTable">
-        <h2 className="userDetails">User Details</h2>
-        <h2 className="countUers">{countU}</h2>
+        <div className="userDetailsSection">
+          <h2 className="userDetails">User Details</h2>
+          <h2 className="countUers">{countU} Users</h2>
+        </div>
         <table>
           <thead>
             <tr>
