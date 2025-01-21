@@ -28,7 +28,7 @@ public class AdminService {
     }
 
     public List<UserInAdminDto> getAllUsers() {
-            List<User> all = userRepo.findAll();
+            List<User> all = userRepo.findByRole("USER");
             List<UserInAdminDto> userInAdminDto = new ArrayList<>();
 
             for (User user : all) {
@@ -41,6 +41,9 @@ public class AdminService {
                         ));
             }
             return userInAdminDto;
-        }
-
     }
+
+    public long countUsers(){
+        return userRepo.countByRole("USER");
+    }
+}

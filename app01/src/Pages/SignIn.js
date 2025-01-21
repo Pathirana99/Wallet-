@@ -15,8 +15,10 @@ export default function SignIn() {
         username:username,
         email:email,
         password:password,
+        role:"USER",
       });
-      alert("Registration Successfully");
+      // alert("Registration Successfully");
+      window.location.href = "/";
     }catch(err){
       alert(err);
     }

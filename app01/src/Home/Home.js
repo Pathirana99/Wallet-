@@ -46,7 +46,7 @@ export default function Home() {
     localStorage.removeItem("username");
     localStorage.removeItem("userEmail");
 
-    window.location.href = "/Login";
+    window.location.href = "/";
   };
 
   return (

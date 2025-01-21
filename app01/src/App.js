@@ -14,7 +14,7 @@ function App() {
      <NavigationBar/>
       <div>
         <Routes>
-          <Route path='/Login' element={<Login/>} />
+          <Route path='/' element={<Login/>} />
           <Route path='/Home' element={<Home/>} />
           <Route path='/SignIn' element={<SignIn/>} />
           <Route path='/Admin' element={<Admin/>}/>

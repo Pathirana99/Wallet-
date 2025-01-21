@@ -8,9 +8,12 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   const handleLogin = async (event) => {
+
     event.preventDefault();
+    setError(""); 
 
     try {
       const response = await axios.post(
@@ -32,10 +35,21 @@ export default function Login() {
       localStorage.setItem("username", username);
       localStorage.setItem("userEmail", userEmail);
 
-      navigate("/Home");
+      if(role === "USER"){
+        navigate("/Home");
+      }else if(role === "ADMIN"){
+        navigate("/Admin");
+      }else{
+        console.log("error")
+      }
+
     } catch (error) {
-      console.error("Error logging in:", error);
+      setError("invalid password or email");
     }
+  };
+
+  const handleSignUp = () => {
+    navigate("/SignIn");
   };
 
   return (
@@ -46,6 +60,7 @@ export default function Login() {
         </div>
         <div className="loginForm">
           <div className="formSection">
+          {error && <p className="errorMessage">{error}</p>}
             <label>Email</label>
             <input
               type="text"
@@ -65,6 +80,10 @@ export default function Login() {
           </div>
           <button className="loginButton" onClick={handleLogin}>
             Login
+          </button>
+          <h9>If you haven't an account please signup</h9>
+          <button className="signUpButton" onClick={handleSignUp}>
+            SignUp
           </button>
         </div>
       </div>
