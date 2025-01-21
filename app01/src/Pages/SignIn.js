@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import './signIn.css'
 import axios from "axios"
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignIn() {
+const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -11,14 +14,30 @@ export default function SignIn() {
   async function save(event) {
     event.preventDefault();
     try{
-      await axios.post("http://localhost:8080/user/save",{
+      const response =  await axios.post("http://localhost:8080/user/save",{
         username:username,
         email:email,
         password:password,
         role:"USER",
       });
-      // alert("Registration Successfully");
-      window.location.href = "/";
+      const { jwt, role } = response.data;
+      
+            localStorage.setItem("jwt", jwt);
+            localStorage.setItem("role", role);
+      
+            const decodedJwt = jwtDecode(jwt);
+            const { username: decodedUsername, email: userEmail } = decodedJwt;
+      
+            localStorage.setItem("username", decodedUsername);
+            localStorage.setItem("userEmail", userEmail);
+      
+            if(role === "USER"){
+              navigate("/Home");
+            }else if(role === "ADMIN"){
+              navigate("/Admin");
+            }else{
+              console.log("error")
+            }
     }catch(err){
       alert(err);
     }
