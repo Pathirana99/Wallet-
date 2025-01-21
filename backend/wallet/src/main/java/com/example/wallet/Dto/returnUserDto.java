@@ -10,9 +10,8 @@ import lombok.NoArgsConstructor;
 public class returnUserDto {
     private Integer id;
     private String username;
-    private String balance;
-    private String email;
 
-    public returnUserDto(Integer id, String username, String email) {
-    }
+    private String email;
+    private String role;
+
 }

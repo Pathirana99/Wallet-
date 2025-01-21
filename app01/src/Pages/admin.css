@@ -58,8 +58,19 @@ td{
     background-color: #bcbbbb;
   }
   .countUers{
-
+    font-weight: bold;
+    color: #000000;
+    text-align: right;
+    margin: 0;
 }
   .userDetails{
-
+    font-weight: bold;
+    color: #000000;
+    text-align: left;
+    margin: 0;
+}
+.userDetailsSection{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
