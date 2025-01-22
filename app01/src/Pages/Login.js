@@ -23,10 +23,10 @@ export default function Login() {
     if (!email && !password) {
       setError("Email and password cannot be empty.");
       return;
-    }else if (email && !password) {
+    } else if (email && !password) {
       setError("password cannot be empty.");
       return;
-    }else if (!email && password) {
+    } else if (!email && password) {
       setError("email cannot be empty.");
       return;
     }
