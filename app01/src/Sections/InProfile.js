@@ -1,10 +1,16 @@
 import React from "react";
+import "./inprofile.css";
 
 export default function InProfile() {
   return (
+    <div className="page">
     <div className="inProfile">
-      <h2>InProfile Section</h2>
-      <p>This is the InProfile section displayed as an overlay on the home page.</p>
+      <div className="box">aaaaaaaaaaaaa</div>
+      <div className="box">bbbbbbbbbbbbbbbb</div>
+      <div className="box">ccccccccccccccccccc</div>
+      <div className="box">ddddddddddddddddd</div>
+      <div className="box">eeeeeeeeeeeeeee</div>
+    </div>
     </div>
   );
 }

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./home.css";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-import InProfile from "../Sections/InProfile"; // Import the InProfile component
+import InProfile from "../Sections/InProfile";
 import SettingsIcon from '@mui/icons-material/Settings';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 export default function Home() {
   const [username, setUsername] = useState("");
@@ -102,9 +103,10 @@ export default function Home() {
       {showInProfile && (
         <div className="Overlay">
           <div className="inProfileContent">
-            <button className="closeButton" onClick={toggleInProfile}>
+          <HighlightOffIcon className="closeButton" sx={{fontSize: 30}} onClick={toggleInProfile}/>
+            {/* <button >
               Close
-            </button>
+            </button> */}
             <InProfile />
           </div>
         </div>
