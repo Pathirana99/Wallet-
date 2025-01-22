@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./home.css";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
+import InProfile from "../Sections/InProfile"; // Import the InProfile component
+import SettingsIcon from '@mui/icons-material/Settings';
 
 export default function Home() {
   const [username, setUsername] = useState("");
@@ -10,6 +12,7 @@ export default function Home() {
   const [outcome, setOutcome] = useState("");
   const [userId, setUserId] = useState("");
   const [balance, setBalance] = useState("click add button");
+  const [showInProfile, setShowInProfile] = useState(false);
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
@@ -35,7 +38,6 @@ export default function Home() {
 
       setIncome("");
       setOutcome("");
-
     } catch (error) {
       console.error("Error updating balance:", error);
     }
@@ -49,9 +51,14 @@ export default function Home() {
     window.location.href = "/";
   };
 
+  const toggleInProfile = () => {
+    setShowInProfile(!showInProfile);
+  };
+
   return (
     <div className="home">
       <div className="sidebar">
+      <SettingsIcon className="iconInProfile" sx={{fontSize: 60}}onClick={toggleInProfile}/>
         <div className="profilePic">
           <div className="profileLetter">{username.charAt(0)}</div>
         </div>
@@ -91,6 +98,17 @@ export default function Home() {
           </button>
         </div>
       </div>
+      
+      {showInProfile && (
+        <div className="Overlay">
+          <div className="inProfileContent">
+            <button className="closeButton" onClick={toggleInProfile}>
+              Close
+            </button>
+            <InProfile />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
