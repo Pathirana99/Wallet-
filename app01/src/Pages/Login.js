@@ -30,7 +30,6 @@ export default function Login() {
       setError("email cannot be empty.");
       return;
     }
-    // Validate email format
     if (!validateEmail(email)) {
       setError("Please enter a valid email address.");
       return;
