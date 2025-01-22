@@ -18,8 +18,19 @@ export default function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    setError(""); 
+    setError("");
 
+    if (!email && !password) {
+      setError("Email and password cannot be empty.");
+      return;
+    }else if (email && !password) {
+      setError("password cannot be empty.");
+      return;
+    }else if (!email && password) {
+      setError("email cannot be empty.");
+      return;
+    }
+    // Validate email format
     if (!validateEmail(email)) {
       setError("Please enter a valid email address.");
       return;
@@ -46,16 +57,15 @@ export default function Login() {
       localStorage.setItem("username", username);
       localStorage.setItem("userEmail", userEmail);
 
-      if(role === "USER"){
+      if (role === "USER") {
         navigate("/Home");
-      }else if(role === "ADMIN"){
+      } else if (role === "ADMIN") {
         navigate("/Admin");
-      }else{
+      } else {
         console.log("error");
       }
-
     } catch (error) {
-      setError("Invalid password or email");
+      setError("Invalid email or password.");
     }
   };
 
