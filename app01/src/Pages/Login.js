@@ -11,7 +11,6 @@ export default function Login() {
   const [error, setError] = useState("");
 
   const handleLogin = async (event) => {
-
     event.preventDefault();
     setError(""); 
 
@@ -28,6 +27,7 @@ export default function Login() {
 
       localStorage.setItem("jwt", jwt);
       localStorage.setItem("role", role);
+      localStorage.setItem("password", password);
 
       const decodedJwt = jwtDecode(jwt);
       const { username, email: userEmail } = decodedJwt;
@@ -40,11 +40,11 @@ export default function Login() {
       }else if(role === "ADMIN"){
         navigate("/Admin");
       }else{
-        console.log("error")
+        console.log("error");
       }
 
     } catch (error) {
-      setError("invalid password or email");
+      setError("Invalid password or email");
     }
   };
 
@@ -60,7 +60,7 @@ export default function Login() {
         </div>
         <div className="loginForm">
           <div className="formSection">
-          {error && <p className="errorMessage">{error}</p>}
+            {error && <p className="errorMessage">{error}</p>}
             <label>Email</label>
             <input
               type="text"
@@ -81,7 +81,7 @@ export default function Login() {
           <button className="loginButton" onClick={handleLogin}>
             Login
           </button>
-          <h9>If you haven't an account please signup</h9>
+          <h9>If you don't have an account, please sign up</h9>
           <button className="signUpButton" onClick={handleSignUp}>
             SignUp
           </button>
