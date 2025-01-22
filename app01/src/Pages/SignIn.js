@@ -62,6 +62,12 @@ export default function SignIn() {
     }
   }
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      save(event);
+    }
+  };
+
   return (
     <div className="login">
       <div className="loginContent">
@@ -79,6 +85,7 @@ export default function SignIn() {
               onChange={(Event) => {
                 setUsername(Event.target.value);
               }}
+              onKeyDown={handleKeyDown}
             />
           </div>
           <div className="formSection">
@@ -90,6 +97,7 @@ export default function SignIn() {
               onChange={(Event) => {
                 setEmail(Event.target.value);
               }}
+              onKeyDown={handleKeyDown}
             />
           </div>
           <div className="formSection">
@@ -101,6 +109,7 @@ export default function SignIn() {
               onChange={(Event) => {
                 setPassword(Event.target.value);
               }}
+              onKeyDown={handleKeyDown}
             />
           </div>
           <button type="submit" className="loginButton" onClick={save}>

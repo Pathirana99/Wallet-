@@ -72,6 +72,12 @@ export default function Login() {
     navigate("/SignIn");
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleLogin(event);
+    }
+  };
+
   return (
     <div className="login">
       <div className="loginContent">
@@ -87,6 +93,7 @@ export default function Login() {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
           </div>
           <div className="formSection">
@@ -96,6 +103,7 @@ export default function Login() {
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
           </div>
           <button className="loginButton" onClick={handleLogin}>
