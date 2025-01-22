@@ -10,9 +10,20 @@ export default function Login() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+  const validateEmail = (email) => {
+    return emailRegex.test(email);
+  };
+
   const handleLogin = async (event) => {
     event.preventDefault();
     setError(""); 
+
+    if (!validateEmail(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
 
     try {
       const response = await axios.post(
