@@ -5,11 +5,11 @@ export default function InProfile() {
   return (
     <div className="page">
     <div className="inProfile">
-      <div className="box">aaaaaaaaaaaaa</div>
-      <div className="box">bbbbbbbbbbbbbbbb</div>
-      <div className="box">ccccccccccccccccccc</div>
-      <div className="box">ddddddddddddddddd</div>
-      <div className="box">eeeeeeeeeeeeeee</div>
+      <div className="box">Change Password</div>
+      <div className="box">Change Email</div>
+      <div className="box">Change user name</div>
+      <div className="box">Change profile image</div>
+      <div className="box">Delete account</div>
     </div>
     </div>
   );
