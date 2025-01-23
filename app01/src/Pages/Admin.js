@@ -20,13 +20,43 @@ export default function Admin() {
 
   useEffect(() => {
     async function fetchUsers() {
-      const userDetails = await axios.get("http://localhost:8080/admin/all");
-      setUsers(userDetails.data);
+      const email = localStorage.getItem("userEmail");
+      const password = localStorage.getItem("password");
+
+      // Encode email and password for Basic Auth
+      const basicAuth = `Basic ${btoa(`${email}:${password}`)}`;
+
+      try {
+        const userDetails = await axios.get("http://localhost:8080/admin/all", {
+          headers: {
+            Authorization: basicAuth,
+          },
+        });
+        setUsers(userDetails.data);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
     }
+
     async function countUsers() {
-      const count = await axios.get("http://localhost:8080/admin/count");
-      setCount(count.data);
+      const email = localStorage.getItem("userEmail");
+      const password = localStorage.getItem("password");
+
+      // (Encode email,password for Basic Auth)
+      const basicAuth = `Basic ${btoa(`${email}:${password}`)}`;
+
+      try {
+        const count = await axios.get("http://localhost:8080/admin/count", {
+          headers: {
+            Authorization: basicAuth,
+          },
+        });
+        setCount(count.data);
+      } catch (error) {
+        console.error("Error fetching user count:", error);
+      }
     }
+
     fetchUsers();
     countUsers();
   }, []);
@@ -36,6 +66,7 @@ export default function Admin() {
     localStorage.removeItem("role");
     localStorage.removeItem("username");
     localStorage.removeItem("userEmail");
+    localStorage.removeItem("password");
 
     window.location.href = "/";
   };

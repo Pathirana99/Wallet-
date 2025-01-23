@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./home.css";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
+import InProfile from "../Sections/InProfile";
+import SettingsIcon from "@mui/icons-material/Settings";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 export default function Home() {
   const [username, setUsername] = useState("");
@@ -10,6 +13,8 @@ export default function Home() {
   const [outcome, setOutcome] = useState("");
   const [userId, setUserId] = useState("");
   const [balance, setBalance] = useState("click add button");
+  const [showInProfile, setShowInProfile] = useState(false);
+  const inProfileRef = useRef(null);
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
@@ -35,7 +40,6 @@ export default function Home() {
 
       setIncome("");
       setOutcome("");
-
     } catch (error) {
       console.error("Error updating balance:", error);
     }
@@ -49,9 +53,36 @@ export default function Home() {
     window.location.href = "/";
   };
 
+  const toggleInProfile = () => {
+    setShowInProfile(!showInProfile);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (inProfileRef.current && !inProfileRef.current.contains(event.target)) {
+        setShowInProfile(false);
+      }
+    };
+
+    if (showInProfile) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showInProfile]);
+
   return (
     <div className="home">
       <div className="sidebar">
+        <SettingsIcon
+          className="iconInProfile"
+          sx={{ fontSize: 60 }}
+          onClick={toggleInProfile}
+        />
         <div className="profilePic">
           <div className="profileLetter">{username.charAt(0)}</div>
         </div>
@@ -91,6 +122,19 @@ export default function Home() {
           </button>
         </div>
       </div>
+
+      {showInProfile && (
+        <div className="Overlay">
+          <div className="inProfileContent" ref={inProfileRef}>
+            <HighlightOffIcon
+              className="closeButton"
+              sx={{ fontSize: 30 }}
+              onClick={toggleInProfile}
+            />
+            <InProfile />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

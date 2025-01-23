@@ -12,5 +12,4 @@ public class UserInAdminDto {
     private String username;
     private String email;
     private Double balance;
-    private String password;
 }

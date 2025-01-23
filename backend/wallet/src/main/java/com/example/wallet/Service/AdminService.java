@@ -36,8 +36,8 @@ public class AdminService {
                                 user.getId(),
                                 user.getUsername(),
                                 user.getEmail(),
-                                user.getBalance(),
-                                user.getPassword()
+                                user.getBalance()
+
                         ));
             }
             return userInAdminDto;
