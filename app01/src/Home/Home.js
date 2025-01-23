@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./home.css";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
@@ -14,6 +14,7 @@ export default function Home() {
   const [userId, setUserId] = useState("");
   const [balance, setBalance] = useState("click add button");
   const [showInProfile, setShowInProfile] = useState(false);
+  const inProfileRef = useRef(null);
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
@@ -55,6 +56,24 @@ export default function Home() {
   const toggleInProfile = () => {
     setShowInProfile(!showInProfile);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (inProfileRef.current && !inProfileRef.current.contains(event.target)) {
+        setShowInProfile(false);
+      }
+    };
+
+    if (showInProfile) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showInProfile]);
 
   return (
     <div className="home">
@@ -106,7 +125,7 @@ export default function Home() {
 
       {showInProfile && (
         <div className="Overlay">
-          <div className="inProfileContent">
+          <div className="inProfileContent" ref={inProfileRef}>
             <HighlightOffIcon
               className="closeButton"
               sx={{ fontSize: 30 }}
