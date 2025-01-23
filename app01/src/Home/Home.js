@@ -3,8 +3,8 @@ import "./home.css";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import InProfile from "../Sections/InProfile";
-import SettingsIcon from '@mui/icons-material/Settings';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import SettingsIcon from "@mui/icons-material/Settings";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 export default function Home() {
   const [username, setUsername] = useState("");
@@ -59,7 +59,11 @@ export default function Home() {
   return (
     <div className="home">
       <div className="sidebar">
-      <SettingsIcon className="iconInProfile" sx={{fontSize: 60}}onClick={toggleInProfile}/>
+        <SettingsIcon
+          className="iconInProfile"
+          sx={{ fontSize: 60 }}
+          onClick={toggleInProfile}
+        />
         <div className="profilePic">
           <div className="profileLetter">{username.charAt(0)}</div>
         </div>
@@ -99,14 +103,15 @@ export default function Home() {
           </button>
         </div>
       </div>
-      
+
       {showInProfile && (
         <div className="Overlay">
           <div className="inProfileContent">
-          <HighlightOffIcon className="closeButton" sx={{fontSize: 30}} onClick={toggleInProfile}/>
-            {/* <button >
-              Close
-            </button> */}
+            <HighlightOffIcon
+              className="closeButton"
+              sx={{ fontSize: 30 }}
+              onClick={toggleInProfile}
+            />
             <InProfile />
           </div>
         </div>
