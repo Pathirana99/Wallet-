@@ -59,7 +59,10 @@ export default function Home() {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (inProfileRef.current && !inProfileRef.current.contains(event.target)) {
+      if (
+        inProfileRef.current &&
+        !inProfileRef.current.contains(event.target)
+      ) {
         setShowInProfile(false);
       }
     };
