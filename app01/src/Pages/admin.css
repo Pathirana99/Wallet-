@@ -74,3 +74,61 @@ td{
     justify-content: space-between;
     margin-bottom: 20px;
 }
+
+@media screen and (max-width: 768px) {
+    .admin {
+        padding: 10px;
+    }
+
+    .adminDetails {
+        width: 100%;
+    }
+
+    .userTable {
+        padding: 15px;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    .logoutButton {
+        font-size: 0.9rem;
+        padding: 8px;
+        width: auto;
+    }
+
+    .userDetailsSection {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .userTable {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 0.5rem;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    .logoutButton {
+        font-size: 0.8rem;
+        padding: 6px;
+    }
+    .adminDetails{
+        width: 100%;
+    }
+    .admin{
+        height: 100vh;
+    }
+}
